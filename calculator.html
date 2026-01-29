@@ -1,0 +1,120 @@
+<html>
+    <head>
+        <title>calculator</title>
+    </head>
+    <style>
+        body{
+            display:flex;
+            justify-content:center;
+        }
+        #container{
+            color:white;
+            background-color: black;
+            border:1px black solid;
+            height: 670px; /* height:100%; */
+            width:330px; /* width:25%; */
+            border-radius:20px;
+        }
+        #answersandoperationsection{
+            /* border:1px green solid; */
+            width:100%;
+            height:39.5%;
+        }
+        #buttonsection{
+            /* border:1px red solid; */
+            display:flex;
+            height:60%;
+        }
+        .buttonscolumn{
+            /* border:1px blue solid; */
+            width:25%;
+            height:100%;
+            display:flex;
+            flex-direction:column;
+            justify-content:space-around;
+            align-items:center;
+            overflow:hidden;
+        }
+        button{
+            justify-self:center;
+            color:white;
+            background-color: rgb(27, 27, 27);
+            font-size:x-large;
+            cursor:pointer;
+            width:95%;
+            height:19%;
+            border-radius:10px;
+        }
+        #equal{
+            background-color:orange;
+            height:38.7%;
+        }
+        #answersection{
+            font-size:55px;
+            text-align:end;
+            align-content:center;
+            /* border:1px cyan solid; */
+            height:75%
+        }
+        #operationsection{
+            text-align:end;
+            font-size:xx-large;
+            /* border:1px brown solid; */
+            height:25%
+        }
+        .numberbutton{
+            background-color:rgb(42, 42, 42);
+        }
+    </style>
+    <body>
+        <div id="container">
+            <div id="answersandoperationsection">
+                <div id="answersection"></div>
+                <div id="operationsection"></div>
+            </div>
+            <div id="buttonsection">
+                <div class="buttonscolumn">
+                    <button id="ac" onclick="AC()">AC</button>
+                    <button id="seven" class="numberbutton" onclick="PrintNumber('seven')">7</button>
+                    <button id="four" class="numberbutton" onclick="PrintNumber('four')">4</button>
+                    <button id="one" class="numberbutton" onclick="PrintNumber('one')">1</button>
+                    <button id="." onclick="PrintNumber('.')">.</button>
+                </div>
+                <div class="buttonscolumn">
+                    <button id="del" onclick="Delete()">←</button>
+                    <button id="eight" class="numberbutton" onclick="PrintNumber('eight')">8</button>
+                    <button id="five" class="numberbutton" onclick="PrintNumber('five')">5</button>
+                    <button id="two" class="numberbutton" onclick="PrintNumber('two')">2</button>
+                    <button id="zero" class="numberbutton" onclick="PrintNumber('zero')">0</button>
+                </div>
+                <div class="buttonscolumn">
+                    <button id="/" onclick="PrintNumber('/')">/</button>
+                    <button id="nine" class="numberbutton" onclick="PrintNumber('nine')">9</button>
+                    <button id="six" class="numberbutton" onclick="PrintNumber('six')">6</button>
+                    <button id="three" class="numberbutton" onclick="PrintNumber('three')">3</button>
+                    <button id="," onclick="PrintNumber(',')">,</button>
+                </div>
+                <div class="buttonscolumn">
+                    <button id="×" onclick="PrintNumber('×')">×</button>
+                    <button id="-" onclick="PrintNumber('-')">-</button>
+                    <button id="+" onclick="PrintNumber('+')">+</button>
+                    <button id="equal" onclick="Output()">=</button>
+                </div>
+            </div>
+        </div>
+        <script>
+           function PrintNumber(ElementId){
+                let number=document.getElementById(ElementId).innerText;
+                document.getElementById("operationsection").innerText += number;
+           }
+           function AC(){
+            document.getElementById("operationsection").innerText = "";
+            document.getElementById("answersection").innerText = "";
+           }
+           function Output(){
+                let operation = document.getElementById("operationsection").innerText
+                document.getElementById("answersection").innerText = eval(operation);
+           }
+        </script>
+    </body>
+</html>
